@@ -27,7 +27,7 @@ public class UserRegistrationService implements UserRegInter {
 		String userState = rt.getForEntity(SSAUrl + userRegistration.getSsn(), String.class).getBody();
 		
 		// if user is is eligible then storing data
-		if (!(userState.isBlank() && userState.isEmpty()) ? UserRegInter.RHODE_ISLAND.trim().equalsIgnoreCase(userState) : false) {
+		if (!(userState.isBlank() && userState.isEmpty()) ? UserRegInter.USER_RHODE_ISLAND.trim().equalsIgnoreCase(userState) : false) {
 
 			repo.save(userRegistration);
 
