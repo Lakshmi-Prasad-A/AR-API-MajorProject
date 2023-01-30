@@ -23,8 +23,10 @@ public class UserRegistrationService implements UserRegInter {
 	@Override
 	public String userRegistration(UserRegistration userRegistration) {
 
+		//Fetching Data from SSA web site to get user country
 		String response = rt.getForEntity(SSAUrl + userRegistration.getSsn(), String.class).getBody();
-
+		
+		// if user is is eligible then storing data
 		if (!(response.isBlank() && response.isEmpty()) ? response.trim().equalsIgnoreCase("Rhode Island") : false) {
 
 			repo.save(userRegistration);
